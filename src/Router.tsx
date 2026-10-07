@@ -1,16 +1,11 @@
-import {
-  createBrowserRouter,
-  Link,
-  Outlet,
-  RouterProvider,
-} from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import { App } from 'src/App'
 import { adminRoutes, Dashboard } from 'src/apps/admin'
 import { authRoutes } from 'src/apps/auth'
 import { boardsRoutes } from 'src/apps/boards'
 import { publicRoutes } from 'src/apps/public'
+import { Home } from './apps/public/pages/Home'
 import { AuthGuard } from './components/AuthGuard'
-
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -18,26 +13,7 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <div>
-            <strong>Apps:</strong>
-            <ul>
-              <li>
-                <Link to="public">Public</Link> (Will be set to landing page
-                once built out)
-              </li>
-              <li>
-                <Link to="auth">Auth</Link>
-              </li>
-              <li>
-                <Link to="dashboard">Dashboard</Link>
-              </li>
-              <li>
-                <Link to="boards">Boards</Link>
-              </li>
-            </ul>
-          </div>
-        ),
+        element: <Home />,
       },
       {
         path: 'public',
